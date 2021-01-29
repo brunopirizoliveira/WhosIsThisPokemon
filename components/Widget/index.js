@@ -7,8 +7,11 @@ const Widget = styled.div`
   background-color: ${({ theme }) => {
     return theme.colors.mainBg;
   }};
+  opacity:0.9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 
 
   h1, h2, h3 {
     font-size: 16px;
