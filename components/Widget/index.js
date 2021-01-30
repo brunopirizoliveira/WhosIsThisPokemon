@@ -1,13 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Widget = styled.div`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 45px;
+  margin-bottom: 12px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => {
-    return theme.colors.mainBg;
-  }};
-  opacity:0.9;
+  background-color: ${({ theme }) => theme.colors.mainBg};
+  opacity:0.95;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   overflow: hidden;
@@ -39,7 +37,11 @@ Widget.Header = styled.header`
 `;
 
 Widget.Content = styled.div`
-  padding: 24px 32px 32px 32px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
   & > *:first-child {
     margin-top: 0;
   }

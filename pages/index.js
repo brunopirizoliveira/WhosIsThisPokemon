@@ -1,4 +1,8 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import db from '../db.json';
 import Widget from '../components/Widget';
 import Footer from '../components/Footer';
@@ -31,11 +35,19 @@ const InputLogin = styled.input`
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.secondary};
   color: white;  
+  font-size: 18px;
   
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.primary};
+    border: 2px solid;
+    padding-left: 3px;
+  }
+
   ::placeholder,
   ::-webkit-input-placeholder {
     color: ${({ theme }) => theme.colors.secondary};
-    
+    padding-left: 3px;
   }
 `;
 
@@ -53,32 +65,52 @@ const ButtonLogin = styled.button`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+
+  function jogar() {      
+      router.push(`/quiz?name=${name}`);
+  }
+
   return (
     <QuizBackground>
+      <Head>
+        <title>Pokemon Quizz</title>
+      </Head>
       <QuizContainer>
         <Widget>
           <Widget.Header>
-            <h1>Pokémon Quiz</h1>
-          </Widget.Header>          
+            <h2>Pokémon Quiz</h2>
+          </Widget.Header>
           <Widget.Content>
-              <p>Teste seu conhecimentos sobre Pokémon, vamos ver se você é um mestre</p>              
+            <h4>Teste seu conhecimentos sobre Pokémon, vamos ver se você é um mestre</h4>            
+            <form onSubmit={function(e) {
+              e.preventDefault();
+              jogar();
+            }}>            
+              <InputLogin 
+                placeholder="Diz ai seu nome" 
+                onChange={function(event) {
+                  setName(event.target.value)
+                }}
+              />
+              <ButtonLogin type="submit" disabled={name.length === 0}>
+                Jogar {name}                
+              </ButtonLogin>
+            </form>
           </Widget.Content>
-          <Widget.Content>
-              <InputLogin placeholder="Digite seu nome para jogar"/>              
-              <ButtonLogin>Jogar</ButtonLogin>
-          </Widget.Content>          
         </Widget>
         <Widget>
           <Widget.Header>
-            <h2>Quizzes da rapeize</h2>            
+            <h2>Quizzes da rapeize</h2>
           </Widget.Header>
           <Widget.Content>
             <p>lorem ipsum dolor sit amet...</p>
           </Widget.Content>
-        </Widget>        
+        </Widget>
       </QuizContainer>
       <Footer />
       <GitHubCorner />
     </QuizBackground>
-  )
+  );
 }

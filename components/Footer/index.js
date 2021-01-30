@@ -1,10 +1,14 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 // src/components/Footer/index.js
 const FooterWrapper = styled.footer`
+  position: absolute;
+  bottom: 0;
   background-color: #00000070;
-  padding: 20px;
+  padding: 10px;
   display: flex;
+  right: 0;
   align-items: center;
   border-radius: 4px; 
   img {
@@ -43,4 +47,4 @@ export default function Footer(props) {
       </p>
     </FooterWrapper>
   );
-} 
+}
