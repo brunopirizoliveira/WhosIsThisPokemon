@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import db from '../db.json';
+import Input from '../components/Input';
+import Button from '../components/Button';
 import Widget from '../components/Widget';
 import Footer from '../components/Footer';
 import GitHubCorner from '../components/GitHubCorner';
@@ -17,52 +19,6 @@ import QuizContainer from '../components/QuizContainer';
 //   background-size: cover;
 //   background-position: center;
 // `;
-
-const Question = styled.div`  
-  background-image: url(${db.pokemonbg});
-  flex: 1;
-  background-size: cover;
-  background-position: center;  
-  height: 350px;
-`;
-
-const InputLogin = styled.input`
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-  height: 50px;
-  background-color: ${({ theme }) => theme.colors.mainBg};
-  border: 1px solid;
-  border-color: ${({ theme }) => theme.colors.secondary};
-  color: white;  
-  font-size: 18px;
-  
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-    border: 2px solid;
-    padding-left: 3px;
-  }
-
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.colors.secondary};
-    padding-left: 3px;
-  }
-`;
-
-const ButtonLogin = styled.button`
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-  height: 50px;
-  margin-top: 5px;
-  border: 1px solid;
-  background-color: ${({ theme }) => theme.colors.primary};
-  border-color: ${({ theme }) => theme.colors.secondary};
-  color: ${({ theme }) => theme.colors.contrastText};
-  font-size: 24px;
-`;
 
 export default function Home() {
   const router = useRouter();
@@ -88,15 +44,13 @@ export default function Home() {
               e.preventDefault();
               jogar();
             }}>            
-              <InputLogin 
+              <Input name="nomeDoUsuario"
                 placeholder="Diz ai seu nome" 
-                onChange={function(event) {
-                  setName(event.target.value)
-                }}
+                onChange={(event) => setName(event.target.value) }
               />
-              <ButtonLogin type="submit" disabled={name.length === 0}>
-                Jogar {name}                
-              </ButtonLogin>
+              <Button type="submit" disabled={name.length === 0}  >
+              {`Jogar ${name}`}
+              </Button>
             </form>
           </Widget.Content>
         </Widget>

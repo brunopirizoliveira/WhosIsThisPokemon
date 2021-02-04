@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Widget = styled.div`
-  margin-top: 45px;
-  margin-bottom: 12px;
+  /* margin-top: 45px; */
+  margin-bottom: 8px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
   background-color: ${({ theme }) => theme.colors.mainBg};
   opacity:0.95;
@@ -27,8 +27,9 @@ const Widget = styled.div`
 Widget.Header = styled.header`
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
-  padding: 18px 32px;
+  padding: 8px 32px;
   background-color: ${({ theme }) => theme.colors.primary};
   
   * {
@@ -41,7 +42,7 @@ Widget.Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   & > *:first-child {
     margin-top: 0;
   }
@@ -51,6 +52,23 @@ Widget.Content = styled.div`
   ul {
     list-style: none;
     padding: 0;
+  }
+`;
+
+Widget.Topic = styled.a`
+  outline: 0;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.secondary};
+  padding: 10px 15px;
+  margin-bottom: 4px;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  transition: .3s;
+  display: block;
+
+  &:hover,
+  &:focus {
+    opacity: .8;
   }
 `;
 
