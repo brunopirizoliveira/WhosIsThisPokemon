@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 // src/components/Footer/index.js
 const FooterWrapper = styled.footer`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: #00000070;
-  padding: 10px;
+  padding: 2px;
   display: flex;
   right: 0;
   align-items: center;
