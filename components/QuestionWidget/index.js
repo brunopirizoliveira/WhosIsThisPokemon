@@ -3,8 +3,11 @@ import PropTypes from 'proptypes';
 import Widget from '../Widget';
 import Button from '../Button';
 import QuizImage from '../QuizImage';
+import AlertSuccess from '../AlertSuccess';
+import AlertError from '../AlertError';
 
-export default function QuestionWidget({totalQuestions, question, questionId, onSubmit}) {
+export default function QuestionWidget({totalQuestions, question, questionIndex, questionId, onSubmit, addResult}) {
+
     const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
     const [isQuestionSubmit, setIsQuestionSubmit] = React.useState(false);
     const isCorrect = question !== undefined ? question.answer === selectedAlternative : undefined;
@@ -13,7 +16,7 @@ export default function QuestionWidget({totalQuestions, question, questionId, on
     return(
         <Widget>
             <Widget.Header>
-                <h3>Pergunta 1 de {totalQuestions}</h3>
+                <h3>Pergunta {questionIndex + 1} de {totalQuestions}</h3>
             </Widget.Header>
             <Widget.Content>
                 <h4>{question.title}</h4>
@@ -25,6 +28,7 @@ export default function QuestionWidget({totalQuestions, question, questionId, on
                     e.preventDefault();
                     setIsQuestionSubmit(true);
                     setTimeout(() => {
+                        addResult(isCorrect);
                         setIsQuestionSubmit(false);
                         setSelectedAlternative(undefined);
                         onSubmit();                        
@@ -49,11 +53,14 @@ export default function QuestionWidget({totalQuestions, question, questionId, on
                         );
                         
                     })}
-                    {isQuestionSubmit && isCorrect && <p>VocÊ acertou!</p>}
-                    {isQuestionSubmit && !isCorrect && <p>VocÊ errou!</p>}
-                    <Button type="submit" disabled={!hasAlternativeSelected}>
-                        Confirmar
-                    </Button>
+                    {isQuestionSubmit && isCorrect && <AlertSuccess />}
+                    {isQuestionSubmit && !isCorrect && <AlertError />}
+                    {!isQuestionSubmit && 
+                        <Button type="submit" disabled={!hasAlternativeSelected}>
+                            Confirmar
+                        </Button>
+                    }
+                    
                 </form>
 
             </Widget.Content>
@@ -63,7 +70,9 @@ export default function QuestionWidget({totalQuestions, question, questionId, on
 
 QuestionWidget.PropTypes = {
     totalQuestions: PropTypes.number.isRequired,
+    questionIndex:  PropTypes.number.isRequired,
     question: PropTypes.array.isRequired,
     questionId: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    addResult: PropTypes.func.isRequired,
 }

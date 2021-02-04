@@ -2,27 +2,23 @@ import React from 'react';
 import Widget from '../Widget';
 import PropTypes from 'proptypes';
 
-export default function ResultQuestion({ results }) {
-    console.log(results);
+function ResultQuestion({ results }) {
+    
     return(
         <Widget>
             <Widget.Header>
-                Carregando...
+                Resultado
             </Widget.Header>
             <Widget.Content>
-                <p>Você acertou  
-                    {results.reduce((somatorioAtual, resultAtual) => {
-                        const isAcerto = resultAtual === true;
-                        if(isAcerto) {
-                            return somatorioAtual + 1;
-                        }
-                        return somatorioAtual;
-                    }, 0)}
-                     questões
-                </p>
+                <h4>
+                    Você acertou
+                    {' '}{Array.from(results).filter((x) => x).length}{' '}
+                    perguntas
+                </h4>
                 <ul>
-                    {results.map((result) => {                        
-                        return <li>{result === true ? 'Acertou' : 'Errou'} </li>
+                    {Array.from(results).map((result, index) => {    
+                        console.log(result);                    
+                        return <li> {`${index +1} ${result === true ? 'Acertou' : 'Errou'}`} </li>
                     })}
                 </ul>
             </Widget.Content>
@@ -33,3 +29,5 @@ export default function ResultQuestion({ results }) {
 ResultQuestion.PropTypes = {
     results: PropTypes.array.isRequired,
 }
+
+export default ResultQuestion;

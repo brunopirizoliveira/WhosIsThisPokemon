@@ -15,7 +15,7 @@ export default function QuizPage() {
     
     const totalQuestions = db.questions.length;
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const [results, setResults] = React.useState([true, false, true])
+    const [results, setResults] = React.useState([]);
     const questionIndex = currentQuestion;
     const question = db.questions[questionIndex];
     const questionId = `question_${questionIndex}`;
@@ -26,16 +26,28 @@ export default function QuizPage() {
         RESULT: "RESULT",
     }
 
-    const [screenState, setScreenState] = React.useState(screenStates.QUIZ);
+    const [screenState, setScreenState] = React.useState(screenStates.LOADING);
+
+    function addResult(result) {
+      setResults([
+        ...results,
+        result,
+      ]);
+    }
 
     React.useEffect(() => {
       setTimeout(() => {
         setScreenState(screenStates.QUIZ);
-      }, 1 * 1000)      
+      }, 1 * 300)      
     }, []);
 
     function handleSubmit() {
-      setCurrentQuestion(questionIndex + 1);
+      const nextQuestion = questionIndex + 1;
+      if (nextQuestion < totalQuestions) {
+        setCurrentQuestion(nextQuestion);
+      } else {
+        setScreenState(screenStates.RESULT);
+      }
     }
 
     return (
@@ -48,8 +60,10 @@ export default function QuizPage() {
                 <QuestionWidget
                     totalQuestions={totalQuestions}
                     question={question}
+                    questionIndex={questionIndex}
                     questionId={questionId}
                     onSubmit={handleSubmit}
+                    addResult={addResult}
                 />
             }
 
