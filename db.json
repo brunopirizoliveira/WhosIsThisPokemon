@@ -17,15 +17,15 @@
         ]
       },
       {
-        "image": "http://pa1.narvii.com/6268/12f74a38ebf783871fc6d1f75ef546825680fd7c_00.gif",
+        "image": "https://cdn.bulbagarden.net/upload/thumb/e/e7/251Celebi.png/600px-251Celebi.png",
         "title": "Quem é esse Pokemon?",
         "description": "Dica, é do tipo Voador/Normal",
-        "answer": 2,
+        "answer": 0,
         "alternatives": [
-           "Pidgey",
-           "Pidgeot",
-           "Pidgeotto",
-           "Spearow"
+           "Celebi",
+           "Mew",
+           "Marill",
+           "Lapras"
         ]
       },
       {
@@ -39,7 +39,92 @@
            "Squirtle",
            "Chicolita"
         ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/8/85/385Jirachi.png/600px-385Jirachi.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Aço/Psíquico",
+        "answer": 3,
+        "alternatives": [
+           "Suicune",
+           "Agumon",
+           "Pikachu",
+           "Jirachi"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/0/02/009Blastoise.png/600px-009Blastoise.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Aquático",
+        "answer": 1,
+        "alternatives": [
+           "Torterra",
+           "Blastoise",
+           "Lucario",
+           "Poliwag"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/c/c6/094Gengar.png/250px-094Gengar.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Fantasma/Venenoso",
+        "answer": 2,
+        "alternatives": [
+           "Haunter",
+           "Gastly",
+           "Gengar",
+           "Cubone"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/f/f6/695Heliolisk.png/250px-695Heliolisk.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Elétrico/Normal",
+        "answer": 1,
+        "alternatives": [
+           "Pichu",
+           "Heliosk",
+           "Emolga",
+           "Zapdos"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/5/5c/387Turtwig.png/250px-387Turtwig.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Planta",
+        "answer": 3,
+        "alternatives": [
+           "Tangela",
+           "Piplup",
+           "Ivysaur",
+           "Turtwig"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/0/06/813Scorbunny.png/250px-813Scorbunny.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Fogo",
+        "answer": 0,
+        "alternatives": [
+           "Scorbunny",
+           "Cyndaquil",
+           "Torchic",
+           "Metabee"
+        ]
+      },
+      {
+        "image": "https://cdn.bulbagarden.net/upload/thumb/d/da/245Suicune.png/600px-245Suicune.png",
+        "title": "Quem é esse Pokemon?",
+        "description": "Dica, é do tipo Água",
+        "answer": 1,
+        "alternatives": [
+           "Entei",
+           "Suicune",
+           "Raikou",
+           "Vileplume"
+        ]
       }
+      
     ],
     "external": [
       ""

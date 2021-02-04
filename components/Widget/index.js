@@ -53,12 +53,15 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
+  h4 {
+    align-self: center;
+  }
 `;
 
 Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.primary};
+  /* color: ${({ theme }) => theme.colors.primary}; */
   background-color: ${({ theme }) => theme.colors.secondary};
   padding: 10px 15px;
   margin-bottom: 4px;

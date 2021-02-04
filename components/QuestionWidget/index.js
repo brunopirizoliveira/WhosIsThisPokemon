@@ -5,6 +5,7 @@ import Button from '../Button';
 import QuizImage from '../QuizImage';
 import AlertSuccess from '../AlertSuccess';
 import AlertError from '../AlertError';
+import AlternativesForm from '../AlternativeForm';
 
 export default function QuestionWidget({totalQuestions, question, questionIndex, questionId, onSubmit, addResult}) {
 
@@ -24,7 +25,7 @@ export default function QuestionWidget({totalQuestions, question, questionIndex,
 
                 <QuizImage img={question.image} />
                 
-                <form onSubmit={(e) => {
+                <AlternativesForm onSubmit={(e) => {
                     e.preventDefault();
                     setIsQuestionSubmit(true);
                     setTimeout(() => {
@@ -36,17 +37,24 @@ export default function QuestionWidget({totalQuestions, question, questionIndex,
                     
                 }}>
                     {question.alternatives.map((alternative, alternativeIndex) => {                    
+                        const alternativeId = `alternative__${alternativeIndex}`;
+                        const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+                        const isSelected = selectedAlternative == alternativeIndex;
                         return(
                             <Widget.Topic
-                                key={alternativeIndex}
+                                key={alternativeId}
                                 as="label" 
-                                htmlFor={alternativeIndex}
+                                htmlFor={alternativeId}
+                                data-selected={isSelected}
+                                data-status={isQuestionSubmit && alternativeStatus}
+                                onClick={() => setSelectedAlternative(alternativeIndex)}
                             >
                                 <input 
                                     id={alternativeIndex}
-                                    name={questionId}
-                                    onChange={() => setSelectedAlternative(alternativeIndex)}
+                                    name={questionId}                                    
+                                    // onChange={() => setSelectedAlternative(alternativeIndex)}
                                     type="radio"
+                                    style={{ display: 'none' }}
                                 />
                                 {alternative}
                             </Widget.Topic>    
@@ -61,7 +69,7 @@ export default function QuestionWidget({totalQuestions, question, questionIndex,
                         </Button>
                     }
                     
-                </form>
+                </AlternativesForm>
 
             </Widget.Content>
         </Widget>

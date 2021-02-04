@@ -7,7 +7,7 @@ function ResultQuestion({ results }) {
     return(
         <Widget>
             <Widget.Header>
-                Resultado
+                <h3>Resultado</h3>
             </Widget.Header>
             <Widget.Content>
                 <h4>
