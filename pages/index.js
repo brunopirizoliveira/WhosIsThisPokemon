@@ -59,9 +59,15 @@ export default function Home() {
             <h2>Quizzes da rapeize</h2>
           </Widget.Header>
           <Widget.Content>
-            <a target="_blank" href="https://quiz-cavaleiro-zodiaco.vercel.app/quiz?Bruno">https://quiz-cavaleiro-zodiaco.vercel.app/quiz?Bruno</a>
-            <a target="_blank" href="https://alura-pokemon-quiz.daniloamsilva.vercel.app/quiz?name=Bruno">https://alura-pokemon-quiz.daniloamsilva.vercel.app/quiz?name=Bruno</a>
-            <a target="_blank" href="https://quiz-star-wars.mattheussal.vercel.app/">https://quiz-star-wars.mattheussal.vercel.app/</a>
+            <ul>
+              {db.external.map((link) => {
+                return(
+                  <Widget.Topic as="a" href={link} target={"_blank"}> 
+                    {link}
+                  </Widget.Topic>                  
+                )                
+              })}
+            </ul>
           </Widget.Content>
         </Widget>
       </QuizContainer>

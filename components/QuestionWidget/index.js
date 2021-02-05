@@ -19,11 +19,11 @@ export default function QuestionWidget({totalQuestions, question, questionIndex,
             <Widget.Header>
                 <h3>Pergunta {questionIndex + 1} de {totalQuestions}</h3>
             </Widget.Header>
-            <Widget.Content>
-                <h4>{question.title}</h4>
+            <Widget.Content>                
                 {/* <h4>{question.description}</h4> */}
 
                 <QuizImage img={question.image} />
+                <h4>{question.title}</h4>
                 
                 <AlternativesForm onSubmit={(e) => {
                     e.preventDefault();

@@ -127,7 +127,8 @@
       
     ],
     "external": [
-      ""
+      "https://quiz-cavaleiro-zodiaco.vercel.app/quiz?Bruno",
+      "https://quiz-star-wars.mattheussal.vercel.app/"
     ],
     "theme": {
       "colors": {
