@@ -10,15 +10,17 @@ import QuizImage from '../components/QuizImage';
 import QuestionWidget from '../components/QuestionWidget';
 import LoadingQuestion from '../components/LoadingQuestion';
 import ResultQuestion from '../components/ResultQuestion';
+import { motion } from 'framer-motion';
 
-export default function QuizPage() {
+export default function QuizPage({externalQuestions, externalBg}) {
     
-    const totalQuestions = db.questions.length;
-    const [currentQuestion, setCurrentQuestion] = React.useState(0);
-    const [results, setResults] = React.useState([]);
-    const questionIndex = currentQuestion;
-    const question = db.questions[questionIndex];
-    const questionId = `question_${questionIndex}`;
+  const [currentQuestion, setCurrentQuestion] = React.useState(0);
+  const [results, setResults] = React.useState([]);
+  const questionIndex = currentQuestion;
+  const questionId = `question_${questionIndex}`;
+  const totalQuestions = externalQuestions !== undefined ? externalQuestions.length : db.questions.length;
+  const question = externalQuestions !== undefined ? externalQuestions[questionIndex] : db.questions[questionIndex];
+  const bg = externalBg !== undefined ? externalBg : db.bg;
 
     const screenStates = {
         QUIZ: "QUIZ",

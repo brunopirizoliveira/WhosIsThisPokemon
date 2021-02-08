@@ -6,6 +6,7 @@ import QuizImage from '../QuizImage';
 import AlertSuccess from '../AlertSuccess';
 import AlertError from '../AlertError';
 import AlternativesForm from '../AlternativeForm';
+import { motion } from 'framer-motion';
 
 export default function QuestionWidget({totalQuestions, question, questionIndex, questionId, onSubmit, addResult}) {
 
@@ -15,7 +16,15 @@ export default function QuestionWidget({totalQuestions, question, questionIndex,
     const hasAlternativeSelected = selectedAlternative !== undefined;
 
     return(
-        <Widget>
+        <Widget 
+            as={motion.section}
+            variants={{
+                show: { opacity: 1 },
+                hidden: { opacity: 0 } 
+            }}
+            initial="hidden"
+            animate="show"
+        >
             <Widget.Header>
                 <h3>Pergunta {questionIndex + 1} de {totalQuestions}</h3>
             </Widget.Header>

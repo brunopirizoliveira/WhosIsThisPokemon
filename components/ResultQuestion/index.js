@@ -1,11 +1,21 @@
 import React from 'react';
 import Widget from '../Widget';
 import PropTypes from 'proptypes';
+import Link from '../Link';
+import { motion } from 'framer-motion';
 
 function ResultQuestion({ results }) {
     
     return(
-        <Widget>
+        <Widget
+            as={motion.section}
+            variants={{
+                show: { opacity: 1 },
+                hidden: { opacity: 0 } 
+            }}
+            initial="hidden"
+            animate="show"
+        >
             <Widget.Header>
                 <h3>Resultado</h3>
             </Widget.Header>
@@ -21,6 +31,9 @@ function ResultQuestion({ results }) {
                         return <li> {`${index +1} ${result === true ? 'Acertou' : 'Errou'}`} </li>
                     })}
                 </ul>
+                <p>
+                    <Link href={"/"}>Voltar ao início</Link>
+                </p>
             </Widget.Content>
         </Widget>
     );

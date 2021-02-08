@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import db from '../db.json';
 import Input from '../components/Input';
@@ -11,6 +12,7 @@ import Footer from '../components/Footer';
 import GitHubCorner from '../components/GitHubCorner';
 import QuizBackground from '../components/QuizBackground';
 import QuizContainer from '../components/QuizContainer';
+import Link from '../components/Link';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -34,7 +36,15 @@ export default function Home() {
         <title>Pokemon Quizz</title>
       </Head>
       <QuizContainer>
-        <Widget>
+        <Widget 
+          as={motion.section}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0 } 
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h2>Pokémon Quiz</h2>
           </Widget.Header>
@@ -54,7 +64,15 @@ export default function Home() {
             </form>
           </Widget.Content>
         </Widget>
-        <Widget>
+        <Widget 
+          as={motion.section}
+          variants={{
+            show: { opacity: 1 },
+            hidden: { opacity: 0 } 
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h2>Quizzes da rapeize</h2>
           </Widget.Header>
@@ -62,9 +80,9 @@ export default function Home() {
             <ul>
               {db.external.map((link) => {
                 return(
-                  <Widget.Topic as="a" href={link} target={"_blank"}> 
-                    {link}
-                  </Widget.Topic>                  
+                  <li key={link}>
+                    <Link href={link}>{link}</Link>
+                  </li>                  
                 )                
               })}
             </ul>
